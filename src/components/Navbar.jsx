@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import "../index.css"
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 
 
 function Navbar() {
     let [q, setQ] = useState('')
     let [language, setLanguage] = useState('hi')
     let [searchParams] = useSearchParams()
+    let [search, setSearch] = useState('')
 
     useEffect(() => {
         setQ(searchParams.get('q') ?? 'All')
         setLanguage(searchParams.get('language') ?? 'hi')
     }, [searchParams])
+
+
+    const navigate = useNavigate()
+
+    function handlePostData(e) {
+        e.preventDefault()
+        navigate(`/?q=${search}&language=${language}`)
+        setSearch("")
+    }
+
 
     return (
         <>
@@ -67,8 +78,8 @@ function Navbar() {
 
                         </ul>
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search"  placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success"  type="submit" onClick={postData}>Search</button>
+                            <input className="form-control me-2" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-success text-light" onClick={handlePostData} type="submit" >Search</button>
                         </form>
                     </div>
                 </div>
