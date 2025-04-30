@@ -1,0 +1,12 @@
+.background{
+    background: linear-gradient(to right, lightgreen, green, darkgreen);
+}
+
+.myText{
+    font-size: 1.5rem;
+    text-decoration:solid;
+}
+
+.medium {
+    font-size: 1.2rem;
+}
