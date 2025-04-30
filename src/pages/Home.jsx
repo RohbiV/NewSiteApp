@@ -9,7 +9,7 @@ function Home() {
     let [q, setQ] = useState("")
     let [searchParams] = useSearchParams()
     let [language, setLanguage] = useState('hi')
-    const [visibleCount, setVisibleCount] = useState(8)
+    const [visibleCount, setVisibleCount] = useState(12)
     const [loading, setLoading] = useState(true)
 
     const API_KEY = import.meta.env.VITE_NEWS_API_KEY
@@ -36,6 +36,7 @@ function Home() {
         let language = searchParams.get("language") ?? "hi"
         setLanguage(language)
         getData(q, language)
+        setVisibleCount(12)
     }, [searchParams])
 
 
@@ -73,13 +74,13 @@ function Home() {
                 (
                     <>
                         <h2 className='text-center'>{q} ({totalResults})</h2>
-                        <div className='container'>
+                        <div className='container-fluid'>
                             <div className="row mt-4">
                                 <NewsArticle articles={articles.slice(0, visibleCount)} />
                             </div>
                             {visibleCount < articles.length && (
                                 <div className="text-center my-3">
-                                    <button className="btn btn-success" onClick={() => setVisibleCount(prev => prev + 8)}>
+                                    <button className="btn btn-success" onClick={() => setVisibleCount(prev => prev + 12)}>
                                         Load More
                                     </button>
                                 </div>

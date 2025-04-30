@@ -6,7 +6,7 @@ function NewsArticle({ articles }) {
             {
                 articles.map((article, index) => {
                     return (
-                        <div className="col-xl-3 col-md-4" key={index}>
+                        <div className="col-xl-2 col-md-4" key={index}>
                             <div className="card m-2" style={{ width: "18rem" }}>
                                 <img src={article.urlToImage??'/images/no_image.jpg'} height={250} className="card-img-top" />
                                 <div className="card-body">
